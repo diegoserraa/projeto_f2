@@ -1,0 +1,25 @@
+Respostas     
+
+Situação 1-
+Poderia verificar na base a data e hora do ultimo login, validaria o comprovante e verificava se a data bate ou se aproxima com a data de ultimo login, e liberaria a realização do projeto em confiança, pois se nao liberar e atrasar o evento do cliente ele nao vai mais querer contratar os serviços. A Instant Check oferece API para consultar boletos funciona basicamente assim ele consulta a base da CIP para verificar se o documento já foi quitado, se está em vencimento (ainda não pago) ou se já passou da data. Dessa forma, o sistema  consegue detectar se o cliente pagou determinado boleto, mesmo que o banco ainda não tenha feito a compensação.
+
+Situação 2-  a formanda raphaella9@gmail.com esta cadastrada na tabela history_emails_blacklist de modo que todos os emails dessa tabela nao sao usados como base para envio. Nessa tabela estao os emails que nao devem ser enviados.
+
+Situação 3-
+Para ajustar o cadastro da Carla Méres podemos dar um update na tabela users_portaldocliente trocando a coluna database para o projeto correto e o id_empresa tambem para poder referenciar de forma correta e a cliente conseguir acessar o sistema sem ter problemas.
+
+Situação 4-
+Acredito que poderia fazer uma busca pelos campos main_table, users_id, e username
+um exemplo seria um 
+select main_table, users_id, username from logs
+na tela poderia ter os filtros e buscar de acordo com o que a analista precisar
+
+
+Situação 5-
+Observei que tem muitas querys na biblioteca de Login eu iria sugerir usar o ORM, porque com ele podemos usar o ADAPTER PATTERN tornando assim o metodo reutilizavel pois com a query  sempre que precisar modificar ou colocar algo a mais, vai gerar mais codigo.
+A function validatePassword acredito que poderia aumentar o minimo de caracteres do usuarios para dificultar um pouco a quebra da criptografia. Nessa mesma função poderia por pelo menos 1 caractere especial.
+
+Situação 6-
+Levando em consideração que o sistema ja esta em produção e um novo sistema esta sendo criado e que possivelmente vai precisar dessa funcionalidade, eu criaria um microserviço para enviar esse sms, de forma que nao preciso mexer tanto no que ja esta funcionando e ja posso aproveitar e reutilizar esse microserviço no sistema novo.
+
+Bonus - Na base crmerp_legacy_company_1 a coluna de cliente_id e usada na tabela users_portaldocliente referenciado de forma que quando temos 1:n a chave primaria do lado 1 atua como chave estrangeira no lado n, observando tambem a tabela users_portaldocliente é observado que os empresa_id inseridos sao correspondente a crmerp_legacy_company_1, de modo que observando a crmerp_legacy_company_2 parece ter um relacionamento 1:1.
